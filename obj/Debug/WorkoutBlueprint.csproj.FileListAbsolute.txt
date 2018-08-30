@@ -1,0 +1,12 @@
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\Blueprint.mdf
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\Blueprint_log.ldf
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\WorkoutBlueprint.exe.config
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\WorkoutBlueprint.exe
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\WorkoutBlueprint.pdb
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.csprojResolveAssemblyReference.cache
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.Form1.resources
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.Properties.Resources.resources
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.csproj.GenerateResource.cache
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.csproj.CoreCompileInputs.cache
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.exe
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.pdb
