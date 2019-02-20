@@ -856,7 +856,15 @@ namespace WorkoutBlueprint
             //Clear the database (table) in case it is not already empty
             cmd = new SqlCommand("TRUNCATE TABLE Exercises;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            
+
+            //TESTING NEW TABLES
+            cmd = new SqlCommand("TRUNCATE TABLE Quadriceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Hamstrings;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Calves;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+
 
             //todo:
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -871,6 +879,28 @@ namespace WorkoutBlueprint
             //Populating the Exercises table based on the MovementList
             foreach(Movement m in MovementList)
             {
+                switch(m.MuscleGroup)
+                {
+                    case ("Legs"):
+                        if (m.SpecificTarget == "Quadriceps")
+                        {
+                            cmd = new SqlCommand("INSERT INTO Quadriceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        else if (m.SpecificTarget == "Hamstrings")
+                        {
+                            cmd = new SqlCommand("INSERT INTO Hamstrings (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+
+                        }
+                        else if (m.SpecificTarget == "Calves")
+                        {
+                            cmd = new SqlCommand("INSERT INTO calves (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        break;
+                    default:
+                        cmd = new SqlCommand("INSERT INTO Exercises (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        break;
+                }
+
                 cmd.Parameters.Add("@Exercise", m.Exercise);
                 cmd.Parameters.Add("@MuscleGroup", m.MuscleGroup);
                 cmd.Parameters.Add("@SpecificTarget", m.SpecificTarget);
