@@ -201,6 +201,14 @@ namespace WorkoutBlueprint
             List<Movement> MovementList = new List<Movement>();
             Movement M;
 
+            /*  Template
+            M.Exercise = "";
+            M.MuscleGroup = "";
+            M.SpecificTarget = "";
+            M.IsCompound = 0;
+            MovementList.Add(M);
+            */
+
             //Shoulders
             M.Exercise = "Arnold Press";
             M.MuscleGroup = "Shoulders";
@@ -211,12 +219,6 @@ namespace WorkoutBlueprint
             M.Exercise = "Behind-The-Neck Press";
             M.MuscleGroup = "Shoulders";
             M.SpecificTarget = "Anterior / Lateral Deltoid";
-            M.IsCompound = 0;
-            MovementList.Add(M);
-
-            M.Exercise = "";
-            M.MuscleGroup = "";
-            M.SpecificTarget = "";
             M.IsCompound = 0;
             MovementList.Add(M);
 
@@ -731,6 +733,12 @@ namespace WorkoutBlueprint
             M.IsCompound = 0;
             MovementList.Add(M);
 
+            M.Exercise = "Reverse Hack Squat";
+            M.MuscleGroup = "Legs";
+            M.SpecificTarget = "Hamstrings";
+            M.IsCompound = 1;
+            MovementList.Add(M);
+
             //Calves
             M.Exercise = "Calf Raises";
             M.MuscleGroup = "Legs";
@@ -850,7 +858,12 @@ namespace WorkoutBlueprint
             cmd.ExecuteNonQuery();
             
 
-
+            //todo:
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //I've created a bunch of new tables (view - solution explorer - blueprint.mdf to see them)
+            //Gonna change the below to change cmd within the foreach, and sort them into their own respective tables
+            //allowing for more SQL fun with joins etc at runtime. Wooo!
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Inserts the following exercises (parameters) into the Exercises table
             cmd = new SqlCommand("INSERT INTO Exercises (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
