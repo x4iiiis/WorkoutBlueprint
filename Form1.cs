@@ -556,19 +556,19 @@ namespace WorkoutBlueprint
 
             M.Exercise = "Reverse Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Biceps Brachii & Forearm";
+            M.SpecificTarget = "Biceps Brachii & Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Reverse Cable Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Biceps Brachii & Forearm";
+            M.SpecificTarget = "Biceps Brachii & Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Reverse Preacher Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Biceps Brachii & Forearm";
+            M.SpecificTarget = "Biceps Brachii & Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
@@ -636,31 +636,31 @@ namespace WorkoutBlueprint
 
             M.Exercise = "Barbell Wrist Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Forearm";
+            M.SpecificTarget = "Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Dumbbell Wrist Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Forearm";
+            M.SpecificTarget = "Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Behind-The-Back Wrist Curls";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Forearm";
+            M.SpecificTarget = "Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Reverse Barbell Wrist Curl";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Forearm";
+            M.SpecificTarget = "Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
             M.Exercise = "Reverse Dumbbell Wrist Curl";
             M.MuscleGroup = "Arms";
-            M.SpecificTarget = "Forearm";
+            M.SpecificTarget = "Forearms";
             M.IsCompound = 0;
             MovementList.Add(M);
 
@@ -864,6 +864,26 @@ namespace WorkoutBlueprint
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE Calves;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Biceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Triceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Forearms;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE AnteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE LateralDeltoid;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE PosteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Trapezius;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Back;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Chest;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Abdominals;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
 
 
             //todo:
@@ -879,8 +899,36 @@ namespace WorkoutBlueprint
             //Populating the Exercises table based on the MovementList
             foreach(Movement m in MovementList)
             {
+                //Sorting exercises into their specific tables
                 switch(m.MuscleGroup)
                 {
+                    case ("Abdominals"):
+                        cmd = new SqlCommand("INSERT INTO Abdominals (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        break;
+
+                    case ("Arms"):
+                        if (m.SpecificTarget == "Biceps Brachii")
+                        {
+                            cmd = new SqlCommand("INSERT INTO Biceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        else if (m.SpecificTarget == "Triceps Brachii")
+                        {
+                            cmd = new SqlCommand("INSERT INTO Triceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        else if (m.SpecificTarget == "Forearms")
+                        {
+                            cmd = new SqlCommand("INSERT INTO Forearms (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        break;
+
+                    case ("Back"):
+                        cmd = new SqlCommand("INSERT INTO Back (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        break;
+
+                    case ("Chest"):
+                        cmd = new SqlCommand("INSERT INTO Chest (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        break;
+
                     case ("Legs"):
                         if (m.SpecificTarget == "Quadriceps")
                         {
@@ -896,6 +944,26 @@ namespace WorkoutBlueprint
                             cmd = new SqlCommand("INSERT INTO calves (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
                         }
                         break;
+
+                    case ("Shoulders"):
+                        if (m.SpecificTarget == "Anterior Deltoid")
+                        {
+                            cmd = new SqlCommand("INSERT INTO AnteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        else if (m.SpecificTarget == "Lateral Deltoid")
+                        {
+                            cmd = new SqlCommand("INSERT INTO LateralDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        else if (m.SpecificTarget == "Posterior Deltoid")
+                        {
+                            cmd = new SqlCommand("INSERT INTO PosteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        }
+                        break;
+
+                    case ("Trapezius"):
+                        cmd = new SqlCommand("INSERT INTO Trapezius (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                        break;
+
                     default:
                         cmd = new SqlCommand("INSERT INTO Exercises (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
                         break;
