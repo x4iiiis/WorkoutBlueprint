@@ -27,6 +27,11 @@ namespace WorkoutBlueprint
             InitializeComponent();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
 
 
         private void btnGo_Click(object sender, EventArgs e)
@@ -96,8 +101,7 @@ namespace WorkoutBlueprint
                     case ("Chest"):
                         {
                             SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Chest';", conn);
+                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Chest;", conn);
                             DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
@@ -107,8 +111,7 @@ namespace WorkoutBlueprint
                         {
                             //DataAdapter for SQL Queries
                             SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Back';", conn);
+                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Back;", conn);
                             DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
@@ -858,39 +861,40 @@ namespace WorkoutBlueprint
             cmd.ExecuteNonQuery();
 
             //TESTING NEW TABLES
-            cmd = new SqlCommand("TRUNCATE TABLE Quadriceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE Abdominals;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Hamstrings;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE AnteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Calves;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE Back;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE Biceps;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Triceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE Calves;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Chest;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE Forearms;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE AnteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE Hamstrings;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE LateralDeltoid;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE PosteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("TRUNCATE TABLE Quadriceps;", conn);    //Truncate clears the table AND resets the ID
+            cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE Trapezius;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Back;", conn);    //Truncate clears the table AND resets the ID
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Chest;", conn);    //Truncate clears the table AND resets the ID
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("TRUNCATE TABLE Abdominals;", conn);    //Truncate clears the table AND resets the ID
+            cmd = new SqlCommand("TRUNCATE TABLE Triceps;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
 
 
             //todo:
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //I've created a bunch of new tables (view - solution explorer - blueprint.mdf to see them)
-            //Gonna change the below to change cmd within the foreach, and sort them into their own respective tables
-            //allowing for more SQL fun with joins etc at runtime. Wooo!
+            //Fix the Shoulders so that they work below (you have 7 that are a mix of deltoids and are defaulting to the
+            //Exercises table rather than a specific deltoid table
+            //I've made back and chest selections from the gui pull from those tables (cause they're straight pulls)
+            //But the next stage will be to work with SQL joins etc for shoulders / arms / legs / etc
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Inserts the following exercises (parameters) into the Exercises table
@@ -987,6 +991,6 @@ namespace WorkoutBlueprint
             //Once the database has been fully populated, the progress bar reflects this and the Go button becomes active
             PopulationProgressBar.Value = 100;
             btnGo.Enabled = true;
-        }
+        }       
     }
 }

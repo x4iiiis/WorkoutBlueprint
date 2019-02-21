@@ -44,16 +44,16 @@ namespace WorkoutBlueprint
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ProgramDisplay = new System.Windows.Forms.DataGridView();
-            this.blueprintDataSet = new WorkoutBlueprint.BlueprintDataSet();
-            this.exercisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.exercisesTableAdapter = new WorkoutBlueprint.BlueprintDataSetTableAdapters.ExercisesTableAdapter();
             this.exerciseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.muscleGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.specificTargetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exercisesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.blueprintDataSet = new WorkoutBlueprint.BlueprintDataSet();
+            this.exercisesTableAdapter = new WorkoutBlueprint.BlueprintDataSetTableAdapters.ExercisesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgramDisplay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueprintDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exercisesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueprintDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGo
@@ -191,20 +191,6 @@ namespace WorkoutBlueprint
             this.ProgramDisplay.TabIndex = 10;
             this.ProgramDisplay.Visible = false;
             // 
-            // blueprintDataSet
-            // 
-            this.blueprintDataSet.DataSetName = "BlueprintDataSet";
-            this.blueprintDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // exercisesBindingSource
-            // 
-            this.exercisesBindingSource.DataMember = "Exercises";
-            this.exercisesBindingSource.DataSource = this.blueprintDataSet;
-            // 
-            // exercisesTableAdapter
-            // 
-            this.exercisesTableAdapter.ClearBeforeFill = true;
-            // 
             // exerciseDataGridViewTextBoxColumn
             // 
             this.exerciseDataGridViewTextBoxColumn.DataPropertyName = "Exercise";
@@ -226,6 +212,20 @@ namespace WorkoutBlueprint
             this.specificTargetDataGridViewTextBoxColumn.Name = "specificTargetDataGridViewTextBoxColumn";
             this.specificTargetDataGridViewTextBoxColumn.Width = 101;
             // 
+            // exercisesBindingSource
+            // 
+            this.exercisesBindingSource.DataMember = "Exercises";
+            this.exercisesBindingSource.DataSource = this.blueprintDataSet;
+            // 
+            // blueprintDataSet
+            // 
+            this.blueprintDataSet.DataSetName = "BlueprintDataSet";
+            this.blueprintDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // exercisesTableAdapter
+            // 
+            this.exercisesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,12 +244,13 @@ namespace WorkoutBlueprint
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGo);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Workout Blueprint";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgramDisplay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blueprintDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exercisesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blueprintDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
