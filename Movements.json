@@ -1,0 +1,95 @@
+{"Exercise":"Arnold Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Behind-The-Neck Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Dumbbell Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Military Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Clean and Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":1}
+{"Exercise":"Machine Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Push Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Dumbbell Lateral Raises","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Cable Lateral Raises","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Reverse Overhead Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Lateral / Posterior Deltoid","IsCompound":0}
+{"Exercise":"Machine Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Lateral deltoid","IsCompound":0}
+{"Exercise":"Front Dumbbell Raises","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Bent-Over Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Posterior Deltoid","IsCompound":0}
+{"Exercise":"Bent-Over Cable Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Posterior Deltoid","IsCompound":0}
+{"Exercise":"Face Pulls","MuscleGroup":"Shoulders","SpecificTarget":"Posterior Deltoid","IsCompound":0}
+{"Exercise":"Upright Rows","MuscleGroup":"Trapezius","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Dumbbell Shrugs","MuscleGroup":"Trapezius","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Barbell Shrugs","MuscleGroup":"Trapezius","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Farmers Walk","MuscleGroup":"Trapezius","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Barbell Flat Bench Press","MuscleGroup":"Chest","SpecificTarget":"Mid Pectorals","IsCompound":1}
+{"Exercise":"Wide-Grip Barbell Flat Bench Press","MuscleGroup":"Chest","SpecificTarget":"Mid Pectorals","IsCompound":1}
+{"Exercise":"Barbell Incline Bench Press","MuscleGroup":"Chest","SpecificTarget":"Upper Pectorals","IsCompound":1}
+{"Exercise":"Dumbbell Flat Bench Press","MuscleGroup":"Chest","SpecificTarget":"Mid Pectorals","IsCompound":1}
+{"Exercise":"Dumbbell Incline Bench Press","MuscleGroup":"Chest","SpecificTarget":"Upper Pectorals","IsCompound":1}
+{"Exercise":"Dumbbell Decline Bench Press","MuscleGroup":"Chest","SpecificTarget":"Lower Pectorals","IsCompound":1}
+{"Exercise":"Parallel Bar Dips","MuscleGroup":"Chest","SpecificTarget":"Upper Pectorals","IsCompound":1}
+{"Exercise":"Dumbbell Flys","MuscleGroup":"Chest","SpecificTarget":"Mid Pectorals","IsCompound":0}
+{"Exercise":"Incline Dumbbell Flys","MuscleGroup":"Chest","SpecificTarget":"Upper Pectorals","IsCompound":0}
+{"Exercise":"Cable Crossovers","MuscleGroup":"Chest","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Bench Cable Crossovers","MuscleGroup":"Chest","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Machine Flys","MuscleGroup":"Chest","SpecificTarget":"Mid Pectorals","IsCompound":0}
+{"Exercise":"Straight-Arm Pullovers","MuscleGroup":"Chest","SpecificTarget":"","IsCompound":0}
+{"Exercise":"Wide-Grip Pullups","MuscleGroup":"Back","SpecificTarget":"Upper Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Wide-Grip Behind-The-Neck Pullups","MuscleGroup":"Back","SpecificTarget":"Upper Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Chin-Ups","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Lat Pulldowns","MuscleGroup":"Back","SpecificTarget":"Upper Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Close / Medium-Grip Pulldown","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Bent-Over Barbell Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
+{"Exercise":"Bent-Over Dumbbell Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
+{"Exercise":"T-Bar Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
+{"Exercise":"Single-Arm Dumbbell Row","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Single-Arm Cable Row","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Seated Cable Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids \u0026 Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Bent-Arm Barbell Pullover","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Deadlift","MuscleGroup":"Back","SpecificTarget":"","IsCompound":1}
+{"Exercise":"Good Mornings","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
+{"Exercise":"Hyperextensions","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
+{"Exercise":"Barbell Curl","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Dumbbell Curl","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Preacher Curl","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"3-Part Curls (21s)","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Incline Dumbbell Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Hammer Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Concentration Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Lying Dumbbell Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
+{"Exercise":"Reverse Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
+{"Exercise":"Reverse Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
+{"Exercise":"Reverse Preacher Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
+{"Exercise":"Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Reverse Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Barbell Skullcrushers","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
+{"Exercise":"Dumbbell Skullcrushers","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
+{"Exercise":"Barbell Tricep Extensions","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
+{"Exercise":"Dumbbell Tricep Extensions","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
+{"Exercise":"Dumbbell Kickbacks","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Close-Grip Bench Press","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Dips","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Bench Dips","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Barbell Wrist Curls","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
+{"Exercise":"Dumbbell Wrist Curls","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
+{"Exercise":"Behind-The-Back Wrist Curls","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
+{"Exercise":"Reverse Barbell Wrist Curl","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
+{"Exercise":"Reverse Dumbbell Wrist Curl","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
+{"Exercise":"Back Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
+{"Exercise":"Front Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
+{"Exercise":"Sissy Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
+{"Exercise":"Leg Press","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
+{"Exercise":"Hack Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
+{"Exercise":"Lunges","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
+{"Exercise":"Bulgarian Split Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
+{"Exercise":"Leg Extension","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
+{"Exercise":"Hamstring Curls","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
+{"Exercise":"Romanian Deadlift","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
+{"Exercise":"Single-Stiff-Leg Dealift","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
+{"Exercise":"Reverse Hack Squat","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":1}
+{"Exercise":"Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Calves","IsCompound":0}
+{"Exercise":"Calf Press","MuscleGroup":"Legs","SpecificTarget":"Calves","IsCompound":0}
+{"Exercise":"Reverse Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Tibialis Anterior?","IsCompound":0}
+{"Exercise":"Roman Chair","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis","IsCompound":0}
+{"Exercise":"Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis","IsCompound":0}
+{"Exercise":"Twisting Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis \u0026 External Obliques","IsCompound":0}
+{"Exercise":"Reverse Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Lower Rectus Abdominis","IsCompound":0}
+{"Exercise":"Hanging Reverse Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Lower Rectus Abdominis","IsCompound":0}
+{"Exercise":"Vertical Bench Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Lower Rectus Abdo
