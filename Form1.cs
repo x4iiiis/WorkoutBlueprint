@@ -57,6 +57,8 @@ namespace WorkoutBlueprint
                 conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\Blueprint.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
 
+                DataTable ProgramTable = new DataTable();
+                
                 //Run queries based on the selections for workout type to generate the workout
                 switch (listboxWorkoutType.SelectedItem)
                 {
@@ -68,7 +70,6 @@ namespace WorkoutBlueprint
                                 "WHERE MuscleGroup LIKE 'Triceps'" +
                                 "OR MuscleGroup LIKE 'Chest'" +
                                 "OR MuscleGroup LIKE 'Shoulders';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -81,7 +82,6 @@ namespace WorkoutBlueprint
                                 "WHERE MuscleGroup LIKE 'Biceps'" +
                                 "OR MuscleGroup LIKE 'Back'" +
                                 "OR MuscleGroup LIKE 'Trap%';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -92,7 +92,6 @@ namespace WorkoutBlueprint
                             SqlDataAdapter Adapter = new SqlDataAdapter(
                                 "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
                                 "WHERE MuscleGroup LIKE 'Legs';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -102,7 +101,6 @@ namespace WorkoutBlueprint
                         {
                             SqlDataAdapter Adapter = new SqlDataAdapter(
                                 "SELECT Exercise, MuscleGroup, SpecificTarget FROM Chest;", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -112,7 +110,6 @@ namespace WorkoutBlueprint
                             //DataAdapter for SQL Queries
                             SqlDataAdapter Adapter = new SqlDataAdapter(
                                 "SELECT Exercise, MuscleGroup, SpecificTarget FROM Back;", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -125,7 +122,6 @@ namespace WorkoutBlueprint
                                 "WHERE MuscleGroup LIKE 'Triceps'" +
                                 "OR MuscleGroup LIKE 'Biceps'" +
                                 "OR MuscleGroup LIKE 'Forearms';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -136,7 +132,6 @@ namespace WorkoutBlueprint
                             SqlDataAdapter Adapter = new SqlDataAdapter(
                                 "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
                                 "WHERE MuscleGroup LIKE 'Shoulders';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -149,7 +144,6 @@ namespace WorkoutBlueprint
                                 "WHERE MuscleGroup LIKE 'Ab%'" +
                                 "OR MuscleGroup LIKE 'Obliques'" +
                                 "OR MuscleGroup LIKE 'Trap%';", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -158,12 +152,15 @@ namespace WorkoutBlueprint
                         {
                             //DataAdapter for SQL Queries
                             SqlDataAdapter Adapter = new SqlDataAdapter("SELECT * FROM Exercises;", conn);
-                            DataTable ProgramTable = new DataTable();
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
                         }
+
+                //Resize the ProgramDisplay based on the number of items in it
+                ProgramDisplay.Height = 23 + (20 * ProgramTable.Rows.Count);
+
                 //Display the ProgramDisplayer on the form
                 ProgramDisplay.Visible = true;
                 
@@ -211,6 +208,9 @@ namespace WorkoutBlueprint
             M.IsCompound = 0;
             MovementList.Add(M);
             */
+            
+            //todo:
+            //Move this to a JSON file and read it in instead
 
             //Shoulders
             M.Exercise = "Arnold Press";
@@ -860,7 +860,7 @@ namespace WorkoutBlueprint
             cmd = new SqlCommand("TRUNCATE TABLE Exercises;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
 
-            //TESTING NEW TABLES
+            //NEW TABLES
             cmd = new SqlCommand("TRUNCATE TABLE Abdominals;", conn);    //Truncate clears the table AND resets the ID
             cmd.ExecuteNonQuery();
             cmd = new SqlCommand("TRUNCATE TABLE AnteriorDeltoid;", conn);    //Truncate clears the table AND resets the ID
