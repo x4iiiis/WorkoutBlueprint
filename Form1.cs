@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace WorkoutBlueprint
 {
@@ -213,7 +214,7 @@ namespace WorkoutBlueprint
             //todo:
             //Move this to a JSON file and read it in instead
 
-            
+
             //Shoulders
             M.Exercise = "Arnold Press";
             M.MuscleGroup = "Shoulders";
@@ -848,22 +849,31 @@ namespace WorkoutBlueprint
             M.SpecificTarget = "Rectus Abdominis";
             M.IsCompound = 0;
             MovementList.Add(M);
-            
+
 
             //Moving the above to JSON
             //string output = new JavaScriptSerializer().Serialize(MovementList);
             //System.IO.File.WriteAllText(@"..\..\Movements.json", output);
 
 
-            System.IO.StreamWriter file = new System.IO.StreamWriter(@"..\..\Movements.json");
-            foreach (Movement m in MovementList)
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"..\..\Movements.json"))
             {
-                file.WriteLine(new JavaScriptSerializer().Serialize(m));
+                foreach (Movement m in MovementList)
+                {
+                    file.WriteLine(new JavaScriptSerializer().Serialize(m));
+                }
             }
 
             //todo:
             //Read back in from the json file
-
+            /*
+            string[] lines = System.IO.File.ReadAllLines(@"..\..\Movements.json");
+            foreach(string l in lines)
+            {
+                M = JsonConvert.DeserializeObject<Movement>(l);
+                MovementList.Add(M);
+            }
+            */
             
 
             //Connect to the database

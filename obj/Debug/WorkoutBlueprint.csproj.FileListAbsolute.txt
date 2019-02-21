@@ -10,3 +10,7 @@ C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutB
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.csproj.CoreCompileInputs.cache
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.exe
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.pdb
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Debug\WorkoutBlueprint.csproj.CopyComplete

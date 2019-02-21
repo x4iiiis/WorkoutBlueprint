@@ -10,3 +10,7 @@ C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Release\Workou
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Release\WorkoutBlueprint.exe
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Release\WorkoutBlueprint.pdb
 C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Release\WorkoutBlueprint.csprojResolveAssemblyReference.cache
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Release\Newtonsoft.Json.dll
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Release\Newtonsoft.Json.pdb
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\bin\Release\Newtonsoft.Json.xml
+C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\obj\Release\WorkoutBlueprint.csproj.CopyComplete
