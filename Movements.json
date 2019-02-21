@@ -1,13 +1,21 @@
-{"Exercise":"Arnold Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
-{"Exercise":"Behind-The-Neck Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
-{"Exercise":"Dumbbell Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
-{"Exercise":"Military Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
-{"Exercise":"Clean and Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":1}
-{"Exercise":"Machine Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
-{"Exercise":"Push Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior / Lateral Deltoid","IsCompound":0}
+{"Exercise":"Arnold Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Arnold Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Behind-The-Neck Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Behind-The-Neck Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Dumbbell Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Dumbbell Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Military Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Military Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Clean and Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":1}
+{"Exercise":"Clean and Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":1}
+{"Exercise":"Machine Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Machine Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Push Press","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
+{"Exercise":"Push Press","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
 {"Exercise":"Dumbbell Lateral Raises","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
 {"Exercise":"Cable Lateral Raises","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
-{"Exercise":"Reverse Overhead Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Lateral / Posterior Deltoid","IsCompound":0}
+{"Exercise":"Reverse Overhead Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Lateral Deltoid","IsCompound":0}
+{"Exercise":"Reverse Overhead Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Posterior Deltoid","IsCompound":0}
 {"Exercise":"Machine Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Lateral deltoid","IsCompound":0}
 {"Exercise":"Front Dumbbell Raises","MuscleGroup":"Shoulders","SpecificTarget":"Anterior Deltoid","IsCompound":0}
 {"Exercise":"Bent-Over Dumbbell Laterals","MuscleGroup":"Shoulders","SpecificTarget":"Posterior Deltoid","IsCompound":0}
