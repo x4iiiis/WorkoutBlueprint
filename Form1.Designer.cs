@@ -176,7 +176,7 @@ namespace WorkoutBlueprint
             this.muscleGroupDataGridViewTextBoxColumn,
             this.specificTargetDataGridViewTextBoxColumn});
             this.ProgramDisplay.DataSource = this.exercisesBindingSource;
-            this.ProgramDisplay.Location = new System.Drawing.Point(124, 375);
+            this.ProgramDisplay.Location = new System.Drawing.Point(3, 375);
             this.ProgramDisplay.Name = "ProgramDisplay";
             this.ProgramDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProgramDisplay.Size = new System.Drawing.Size(543, 385);
@@ -222,7 +222,7 @@ namespace WorkoutBlueprint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 832);
+            this.ClientSize = new System.Drawing.Size(558, 313);
             this.Controls.Add(this.ProgramDisplay);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);

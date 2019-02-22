@@ -39,8 +39,7 @@ namespace WorkoutBlueprint
         {
             //Prevent double clicking
             btnGo.Enabled = false;
-
-
+            
             try
             {
                 //Input validation
@@ -170,6 +169,10 @@ namespace WorkoutBlueprint
                 //once the workout generation is an actual genuine thing
                 GenerationProgressBar.Increment(100);
 
+                //Scale up the form
+                Form1.ActiveForm.Width = 816;
+                Form1.ActiveForm.Height = 871;
+
 
                 //Resize the ProgramDisplay based on the number of items in it
                 ProgramDisplay.Height = 23 + (20 * ProgramTable.Rows.Count);
@@ -198,7 +201,13 @@ namespace WorkoutBlueprint
                 }
                 else    //If there are 25 or less movements, the window will still be adjusted to match the output
                 {
-                    Form1.ActiveForm.Height = Form1.ActiveForm.Height - 439; //Set form height just long enough to see the column headings (further adjustments imminent)
+                    Form1.ActiveForm.Width = Form1.ActiveForm.Width + 25;
+                    Form1.ActiveForm.Height = Form1.ActiveForm.Height - 439 - 75; //Set form height just long enough to see the column headings (further adjustments imminent)
+
+                    ProgramDisplay.Left -= 100;
+                    ProgramDisplay.Top -= 75;
+                    pictureBox1.Left += 25;
+                    pictureBox1.Top = ProgramDisplay.Bottom - pictureBox1.Height;
                 }
                 Form1.ActiveForm.Height = Form1.ActiveForm.Height + (20 * ProgramTable.Rows.Count); //Adjust form height based on number of rows
                 Form1.ActiveForm.Height = Form1.ActiveForm.Height + 50; //Add a bottom margin to the form
@@ -250,8 +259,7 @@ namespace WorkoutBlueprint
                 M = JsonConvert.DeserializeObject<Movement>(l);
                 MovementList.Add(M);
             }
-            
-            
+           
 
             //Connect to the database
             conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ryan_\source\repos\WorkoutBlueprint\WorkoutBlueprint\Blueprint.mdf;Integrated Security=True;Connect Timeout=30");
