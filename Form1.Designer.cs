@@ -41,7 +41,6 @@ namespace WorkoutBlueprint
             this.GenerationProgressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ProgramDisplay = new System.Windows.Forms.DataGridView();
             this.exerciseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +58,7 @@ namespace WorkoutBlueprint
             // btnGo
             // 
             this.btnGo.Enabled = false;
-            this.btnGo.Location = new System.Drawing.Point(330, 154);
+            this.btnGo.Location = new System.Drawing.Point(330, 94);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 23);
             this.btnGo.TabIndex = 0;
@@ -70,7 +69,7 @@ namespace WorkoutBlueprint
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(121, 68);
+            this.label1.Location = new System.Drawing.Point(121, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
@@ -88,7 +87,7 @@ namespace WorkoutBlueprint
             "Arms",
             "Shoulders",
             "Accessories"});
-            this.listboxWorkoutType.Location = new System.Drawing.Point(124, 84);
+            this.listboxWorkoutType.Location = new System.Drawing.Point(124, 24);
             this.listboxWorkoutType.Name = "listboxWorkoutType";
             this.listboxWorkoutType.Size = new System.Drawing.Size(120, 108);
             this.listboxWorkoutType.TabIndex = 2;
@@ -96,7 +95,7 @@ namespace WorkoutBlueprint
             // radioStrength
             // 
             this.radioStrength.AutoSize = true;
-            this.radioStrength.Location = new System.Drawing.Point(299, 108);
+            this.radioStrength.Location = new System.Drawing.Point(299, 48);
             this.radioStrength.Name = "radioStrength";
             this.radioStrength.Size = new System.Drawing.Size(106, 17);
             this.radioStrength.TabIndex = 3;
@@ -108,7 +107,7 @@ namespace WorkoutBlueprint
             // radioHypertrophy
             // 
             this.radioHypertrophy.AutoSize = true;
-            this.radioHypertrophy.Location = new System.Drawing.Point(299, 131);
+            this.radioHypertrophy.Location = new System.Drawing.Point(299, 71);
             this.radioHypertrophy.Name = "radioHypertrophy";
             this.radioHypertrophy.Size = new System.Drawing.Size(123, 17);
             this.radioHypertrophy.TabIndex = 4;
@@ -119,49 +118,42 @@ namespace WorkoutBlueprint
             // 
             // PopulationProgressBar
             // 
-            this.PopulationProgressBar.Location = new System.Drawing.Point(124, 246);
+            this.PopulationProgressBar.Location = new System.Drawing.Point(124, 186);
             this.PopulationProgressBar.Name = "PopulationProgressBar";
-            this.PopulationProgressBar.Size = new System.Drawing.Size(153, 23);
+            this.PopulationProgressBar.Size = new System.Drawing.Size(298, 23);
             this.PopulationProgressBar.TabIndex = 5;
             this.PopulationProgressBar.Tag = "";
             // 
             // GenerationProgressBar
             // 
-            this.GenerationProgressBar.Location = new System.Drawing.Point(124, 306);
+            this.GenerationProgressBar.Location = new System.Drawing.Point(124, 246);
             this.GenerationProgressBar.Name = "GenerationProgressBar";
-            this.GenerationProgressBar.Size = new System.Drawing.Size(153, 23);
+            this.GenerationProgressBar.Size = new System.Drawing.Size(298, 23);
             this.GenerationProgressBar.TabIndex = 6;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(121, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 0;
+            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Database Population:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 227);
+            this.label3.Location = new System.Drawing.Point(121, 230);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Database Population:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(121, 290);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Workout Generation:";
+            this.label3.Size = new System.Drawing.Size(106, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Workout Generation:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(559, 68);
+            this.pictureBox1.Location = new System.Drawing.Point(559, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(208, 331);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -184,7 +176,7 @@ namespace WorkoutBlueprint
             this.muscleGroupDataGridViewTextBoxColumn,
             this.specificTargetDataGridViewTextBoxColumn});
             this.ProgramDisplay.DataSource = this.exercisesBindingSource;
-            this.ProgramDisplay.Location = new System.Drawing.Point(124, 435);
+            this.ProgramDisplay.Location = new System.Drawing.Point(124, 375);
             this.ProgramDisplay.Name = "ProgramDisplay";
             this.ProgramDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProgramDisplay.Size = new System.Drawing.Size(543, 385);
@@ -233,7 +225,6 @@ namespace WorkoutBlueprint
             this.ClientSize = new System.Drawing.Size(800, 832);
             this.Controls.Add(this.ProgramDisplay);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GenerationProgressBar);
@@ -243,6 +234,8 @@ namespace WorkoutBlueprint
             this.Controls.Add(this.listboxWorkoutType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Workout Blueprint";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -268,7 +261,6 @@ namespace WorkoutBlueprint
         private System.Windows.Forms.ProgressBar GenerationProgressBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private BlueprintDataSet blueprintDataSet;
         private System.Windows.Forms.BindingSource exercisesBindingSource;

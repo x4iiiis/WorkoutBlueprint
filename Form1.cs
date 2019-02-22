@@ -13,7 +13,6 @@ namespace WorkoutBlueprint
     {
         SqlCommand cmd;
         SqlConnection conn;
-        SqlDataAdapter da;
 
         //For ease of creating exercises to add to the list and subsequentially the database
         struct Movement
@@ -76,6 +75,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Pull"):
                         {
                             //DataAdapter for SQL Queries
@@ -88,6 +88,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Legs"):
                         {
                             //DataAdapter for SQL Queries
@@ -107,6 +108,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Back"):
                         {
                             //DataAdapter for SQL Queries
@@ -116,6 +118,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Arms"):
                         {
                             //DataAdapter for SQL Queries
@@ -128,6 +131,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Shoulders"):
                         {
                             //DataAdapter for SQL Queries
@@ -138,6 +142,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     case ("Accessories"):
                         {
                             //DataAdapter for SQL Queries
@@ -150,6 +155,7 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
+
                     default:
                         {
                             //DataAdapter for SQL Queries
@@ -158,15 +164,49 @@ namespace WorkoutBlueprint
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
                         }
-                        }
+                }
+
+                //Temporarily just bumping it to 100% when it's done, but maybe it'll be done in instalments 
+                //once the workout generation is an actual genuine thing
+                GenerationProgressBar.Increment(100);
+
 
                 //Resize the ProgramDisplay based on the number of items in it
                 ProgramDisplay.Height = 23 + (20 * ProgramTable.Rows.Count);
+                
+                //Messy spaghetti but this reconfigures the layout when there are more than 25 exercises being prescribed
+                if (ProgramTable.Rows.Count > 25)
+                {
+                    Form1.ActiveForm.Width = (int)Math.Ceiling(Form1.ActiveForm.Width * 1.5);
+                    pictureBox1.Left += 375;
+                    ProgramDisplay.Left += 50;
+                    ProgramDisplay.Top -= 368;
+
+                    btnGo.Left -= 100;
+                    radioHypertrophy.Left -= 100;
+                    radioStrength.Left -= 100;
+                    listboxWorkoutType.Left -= 100;
+                    label1.Left -= 100;
+                    label2.Left -= 100;
+                    label3.Left -= 100;
+                    PopulationProgressBar.Left -= 100;
+                    GenerationProgressBar.Left -= 100;
+
+                    Form1.ActiveForm.Height = Form1.ActiveForm.Height - 803; //Set form height just long enough to see the column headings (further adjustments imminent)
+                    pictureBox1.Top = ProgramDisplay.Bottom - pictureBox1.Height;
+
+                }
+                else    //If there are 25 or less movements, the window will still be adjusted to match the output
+                {
+                    Form1.ActiveForm.Height = Form1.ActiveForm.Height - 439; //Set form height just long enough to see the column headings (further adjustments imminent)
+                }
+                Form1.ActiveForm.Height = Form1.ActiveForm.Height + (20 * ProgramTable.Rows.Count); //Adjust form height based on number of rows
+                Form1.ActiveForm.Height = Form1.ActiveForm.Height + 50; //Add a bottom margin to the form
+
 
                 //Display the ProgramDisplayer on the form
                 ProgramDisplay.Visible = true;
                 
-
                 //Close the connection
                 conn.Close();
             }
@@ -227,9 +267,7 @@ namespace WorkoutBlueprint
 
 
             //todo:
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //Fix the Shoulders so that they work below (you have 7 that are a mix of deltoids and are defaulting to the
-            //Exercises table rather than a specific deltoid table
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //I've made back and chest selections from the gui pull from those tables (cause they're straight pulls)
             //But the next stage will be to work with SQL joins etc for shoulders / arms / legs / etc
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -241,70 +279,86 @@ namespace WorkoutBlueprint
                 switch(m.MuscleGroup)
                 {
                     case ("Abdominals"):
-                        cmd = new SqlCommand("INSERT INTO Abdominals (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        break;
+                        {
+                            cmd = new SqlCommand("INSERT INTO Abdominals (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
 
                     case ("Arms"):
-                        if (m.SpecificTarget == "Biceps Brachii")
                         {
-                            cmd = new SqlCommand("INSERT INTO Biceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            if (m.SpecificTarget == "Biceps Brachii")
+                            {
+                                cmd = new SqlCommand("INSERT INTO Biceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            else if (m.SpecificTarget == "Triceps Brachii")
+                            {
+                                cmd = new SqlCommand("INSERT INTO Triceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            else if (m.SpecificTarget == "Forearms")
+                            {
+                                cmd = new SqlCommand("INSERT INTO Forearms (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            break;
                         }
-                        else if (m.SpecificTarget == "Triceps Brachii")
-                        {
-                            cmd = new SqlCommand("INSERT INTO Triceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        else if (m.SpecificTarget == "Forearms")
-                        {
-                            cmd = new SqlCommand("INSERT INTO Forearms (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        break;
 
                     case ("Back"):
-                        cmd = new SqlCommand("INSERT INTO Back (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        break;
+                        {
+                            cmd = new SqlCommand("INSERT INTO Back (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
 
                     case ("Chest"):
-                        cmd = new SqlCommand("INSERT INTO Chest (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        break;
+                        {
+                            cmd = new SqlCommand("INSERT INTO Chest (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
 
                     case ("Legs"):
-                        if (m.SpecificTarget == "Quadriceps")
                         {
-                            cmd = new SqlCommand("INSERT INTO Quadriceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        else if (m.SpecificTarget == "Hamstrings")
-                        {
-                            cmd = new SqlCommand("INSERT INTO Hamstrings (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            if (m.SpecificTarget == "Quadriceps")
+                            {
+                                cmd = new SqlCommand("INSERT INTO Quadriceps (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            else if (m.SpecificTarget == "Hamstrings")
+                            {
+                                cmd = new SqlCommand("INSERT INTO Hamstrings (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
 
+                            }
+                            else if (m.SpecificTarget == "Calves")
+                            {
+                                cmd = new SqlCommand("INSERT INTO calves (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            break;
                         }
-                        else if (m.SpecificTarget == "Calves")
-                        {
-                            cmd = new SqlCommand("INSERT INTO calves (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        break;
 
                     case ("Shoulders"):
-                        if (m.SpecificTarget == "Anterior Deltoid")
                         {
-                            cmd = new SqlCommand("INSERT INTO AnteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            if (m.SpecificTarget == "Anterior Deltoid")
+                            {
+                                cmd = new SqlCommand("INSERT INTO AnteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            else if (m.SpecificTarget == "Lateral Deltoid")
+                            {
+                                cmd = new SqlCommand("INSERT INTO LateralDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            else if (m.SpecificTarget == "Posterior Deltoid")
+                            {
+                                cmd = new SqlCommand("INSERT INTO PosteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            }
+                            break;
                         }
-                        else if (m.SpecificTarget == "Lateral Deltoid")
-                        {
-                            cmd = new SqlCommand("INSERT INTO LateralDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        else if (m.SpecificTarget == "Posterior Deltoid")
-                        {
-                            cmd = new SqlCommand("INSERT INTO PosteriorDeltoid (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        }
-                        break;
 
                     case ("Trapezius"):
-                        cmd = new SqlCommand("INSERT INTO Trapezius (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        break;
+                        {
+                            cmd = new SqlCommand("INSERT INTO Trapezius (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
 
                     default:
-                        cmd = new SqlCommand("INSERT INTO Exercises (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
-                        break;
+                        {
+                            cmd = new SqlCommand("INSERT INTO Exercises (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
                 }
 
                 cmd.Parameters.Add("@Exercise", m.Exercise);
