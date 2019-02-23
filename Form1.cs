@@ -266,7 +266,7 @@ namespace WorkoutBlueprint
             conn.Open();
 
             string[] Tables = new string[] { "Abdominals", "AnteriorDeltoid", "Back", "Biceps", "Calves", "Chest", "Exercises", "Forearms",
-                                                "Hamstrings", "LateralDeltoid", "PosteriorDeltoid", "Quadriceps", "Trapezius", "Triceps"};
+                                                "Glutes", "Hamstrings", "LateralDeltoid", "PosteriorDeltoid", "Quadriceps", "Trapezius", "Triceps"};
             foreach(string T in Tables)
             {
                 cmd = new SqlCommand("TRUNCATE TABLE " + T + ";", conn);    //Truncate clears the table AND resets the ID
@@ -318,6 +318,12 @@ namespace WorkoutBlueprint
                     case ("Chest"):
                         {
                             cmd = new SqlCommand("INSERT INTO Chest (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
+                            break;
+                        }
+
+                    case ("Glutes"):
+                        {
+                            cmd = new SqlCommand("INSERT INTO Glutes (Exercise, MuscleGroup, SpecificTarget, IsCompound) VALUES (@Exercise, @MuscleGroup, @SpecificTarget, @IsCompound)", conn);
                             break;
                         }
 
