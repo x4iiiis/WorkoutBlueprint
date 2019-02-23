@@ -135,8 +135,12 @@ namespace WorkoutBlueprint
                         {
                             //DataAdapter for SQL Queries
                             SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Shoulders';", conn);
+                                "SELECT * FROM AnteriorDeltoid " +
+                                "UNION " + 
+                                "SELECT * FROM LateralDeltoid " +
+                                "UNION " +
+                                "SELECT * FROM PosteriorDeltoid " +
+                                "ORDER BY SpecificTarget;", conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -168,6 +172,7 @@ namespace WorkoutBlueprint
                 //Temporarily just bumping it to 100% when it's done, but maybe it'll be done in instalments 
                 //once the workout generation is an actual genuine thing
                 GenerationProgressBar.Increment(100);
+                
 
                 //Scale up the form
                 Form1.ActiveForm.Width = 816;
