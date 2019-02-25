@@ -65,11 +65,7 @@ namespace WorkoutBlueprint
                     case ("Push"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Triceps'" +
-                                "OR MuscleGroup LIKE 'Chest'" +
-                                "OR MuscleGroup LIKE 'Shoulders';", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(PushDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -78,11 +74,7 @@ namespace WorkoutBlueprint
                     case ("Pull"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Biceps'" +
-                                "OR MuscleGroup LIKE 'Back'" +
-                                "OR MuscleGroup LIKE 'Trap%';", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(PullDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -91,9 +83,7 @@ namespace WorkoutBlueprint
                     case ("Legs"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Legs';", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(LegDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -101,8 +91,7 @@ namespace WorkoutBlueprint
 
                     case ("Chest"):
                         {
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Chest;", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(ChestDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -111,8 +100,7 @@ namespace WorkoutBlueprint
                     case ("Back"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Back;", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(BackDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -121,11 +109,7 @@ namespace WorkoutBlueprint
                     case ("Arms"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Triceps'" +
-                                "OR MuscleGroup LIKE 'Biceps'" +
-                                "OR MuscleGroup LIKE 'Forearms';", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(ArmDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -134,13 +118,7 @@ namespace WorkoutBlueprint
                     case ("Shoulders"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT * FROM AnteriorDeltoid " +
-                                "UNION " + 
-                                "SELECT * FROM LateralDeltoid " +
-                                "UNION " +
-                                "SELECT * FROM PosteriorDeltoid " +
-                                "ORDER BY SpecificTarget;", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(ShoulderDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -149,11 +127,7 @@ namespace WorkoutBlueprint
                     case ("Accessories"):
                         {
                             //DataAdapter for SQL Queries
-                            SqlDataAdapter Adapter = new SqlDataAdapter(
-                                "SELECT Exercise, MuscleGroup, SpecificTarget FROM Exercises " +
-                                "WHERE MuscleGroup LIKE 'Ab%'" +
-                                "OR MuscleGroup LIKE 'Obliques'" +
-                                "OR MuscleGroup LIKE 'Trap%';", conn);
+                            SqlDataAdapter Adapter = new SqlDataAdapter(AccessoryDay(), conn);
                             Adapter.Fill(ProgramTable);
                             ProgramDisplay.DataSource = ProgramTable;
                             break;
@@ -398,6 +372,196 @@ namespace WorkoutBlueprint
             //Once the database has been fully populated, the progress bar reflects this and the Go button becomes active
             PopulationProgressBar.Value = 100;
             btnGo.Enabled = true;
-        }       
+        }
+
+
+        private string PullDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if(radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Biceps " +
+                        "UNION " +
+                        "SELECT * FROM Back " +
+                        "UNION " +
+                        "SELECT * FROM PosteriorDeltoid " +
+                        "UNION " +
+                        "SELECT * FROM Trapezius " +
+                        "ORDER BY SpecificTarget;";
+
+            return Workout;
+        }
+
+        private string PushDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Triceps " +
+                        "UNION " +
+                        "SELECT* FROM Chest " +
+                        "UNION " +
+                        "SELECT* FROM AnteriorDeltoid " +
+                        "UNION " +
+                        "SELECT * FROM LateralDeltoid " +
+                        "ORDER BY SpecificTarget;";
+
+            return Workout;
+        }
+
+        private string LegDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Quadriceps " +
+                        "UNION " +
+                        "SELECT* FROM Hamstrings " +
+                        "UNION " +
+                        "SELECT * FROM Calves " +
+                        "ORDER BY SpecificTarget;";
+
+            return Workout;
+        }
+
+        private string ChestDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Chest;";
+
+            return Workout;
+        }
+
+        private string BackDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Back;";
+
+            return Workout;
+        }
+
+        private string ArmDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM Biceps " +
+                        "UNION " +
+                        "SELECT * FROM Triceps " +
+                        "UNION " +
+                        "SELECT * FROM Forearms " +
+                        "ORDER BY SpecificTarget;";
+
+            return Workout;
+        }
+
+        private string ShoulderDay()
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "SELECT * FROM AnteriorDeltoid " +
+                        "UNION " +
+                        "SELECT* FROM LateralDeltoid " +
+                        "UNION " +
+                        "SELECT * FROM PosteriorDeltoid " +
+                        "ORDER BY SpecificTarget;";
+
+            return Workout;
+        }
+
+        private string AccessoryDay()
+        {
+            string Workout;
+
+            radioStrength.Enabled = false;
+            radioStrength.Checked = false;
+            radioHypertrophy.Checked = true;
+
+            Workout = "SELECT * FROM Abdominals " +
+                        "UNION " +
+                        "SELECT * FROM Glutes " +
+                        "UNION " +
+                        "SELECT * FROM Trapezius;";
+
+            return Workout;
+        }
+
+        private string CardioDay()      //todo: This is just here incase I add cardio in later
+        {
+            string Workout;
+
+            if (radioStrength.Checked)
+            {
+
+            }
+            else if (radioHypertrophy.Checked)
+            {
+
+            }
+
+            Workout = "";
+            return Workout;
+        }
     }
 }
