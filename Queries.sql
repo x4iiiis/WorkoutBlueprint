@@ -68,3 +68,68 @@ SELECT * FROM AnteriorDeltoid
 UNION
 SELECT * FROM LateralDeltoid
 ORDER BY SpecificTarget
+
+
+/* Disgusting but this selects a random number in the range of non-compound chest exercises */
+SELECT FLOOR(RAND()*((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0)-1+1))+1;
+
+
+
+
+/* Utterly ridiculous looking but this is what we have so far for push strength */
+/* HORRIBLE - but this returns pullovers in a 1/(number of non-compounds) chance */
+WITH
+	ChestNonCompounds AS
+	(
+		SELECT *, ROW_NUMBER() OVER (ORDER BY ID) as RowNumber FROM Chest WHERE IsCompound = 0
+	),
+	ChestNonCompIntersect as 
+	(
+		Select RowNumber from ChestNonCompounds
+		Intersect
+		Select * from (SELECT FLOOR(RAND()*((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0)-1+1))+1 as RandNum)A
+	),
+	CS as
+	(
+		SELECT * FROM ChestNonCompounds WHERE Exercise LIKE '%Pullover%'
+	)
+/* Working on a proper push workout - STRENGTH */
+SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Chest
+	WHERE IsCompound = 1 AND Exercise LIKE '%Flat%'
+	ORDER BY NEWID()
+)A
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Chest
+	WHERE IsCompound = 1 AND Exercise LIKE '%Incline%'
+	ORDER BY NEWID()
+)B
+UNION
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM AnteriorDeltoid
+	WHERE IsCompound = 1 AND Exercise NOT LIKE '%Arnold%' AND Exercise NOT LIKE '%Machine%'		/* Drop Arnold and Machine presses from Strength workouts */
+	ORDER BY NEWID()
+)C
+UNION
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM CS		/* Add optional Chest exercises */
+	WHERE RowNumber IN (SELECT * FROM ChestNonCompIntersect)
+)D
+UNION
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Chest	/* Add fly/crossover variation */
+	WHERE Exercise LIKE '%Crossover%' OR Exercise LIKE '%Fly%'
+	ORDER BY NEWID()
+)E
+UNION
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Triceps
+)F
+ORDER BY MuscleGroup;	/* Temp - testing purposes */ 

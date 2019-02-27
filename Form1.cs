@@ -194,6 +194,9 @@ namespace WorkoutBlueprint
 
                 //Display the ProgramDisplayer on the form
                 ProgramDisplay.Visible = true;
+
+                //Just here to show how to access the table (dunno why I'd need to)
+                //MessageBox.Show(ProgramTable.Rows[0].ItemArray[1].ToString());
                 
                 //Close the connection
                 conn.Close();
@@ -402,25 +405,90 @@ namespace WorkoutBlueprint
 
         private string PushDay()
         {
-            string Workout;
+            string Workout = "";
 
             if (radioStrength.Checked)
             {
+                Workout =
+                    "WITH " +
+                    "ChestNonCompounds AS" +
+                    "(" +
+                        "SELECT *, ROW_NUMBER() OVER (ORDER BY ID) as RowNumber " +
+                        "FROM Chest " +
+                        "WHERE IsCompound = 0" +
+                    "), " +
+                    "ChestNonCompIntersect as " +
+                    "(" +
+                        "Select RowNumber from ChestNonCompounds " +
+                        "Intersect " +
+                        "Select * from (SELECT FLOOR(RAND() * ((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0) - 1 + 1))+1 as RandNum)A " +
+                    "), " +
+                    "ChestOptionals as " +
+                    "(" +
+                        "SELECT * FROM ChestNonCompounds " +
+                        "WHERE Exercise LIKE '%Pullover%'" +
+                    ") " +
 
+
+                    "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                    "FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Chest " +
+                        "WHERE IsCompound = 1 AND Exercise LIKE '%Flat%' " +
+                        "ORDER BY NEWID() " +
+                    ")A " +
+                        "UNION " +
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Chest " +
+                        "WHERE IsCompound = 1 AND Exercise LIKE '%Incline%' " +
+                        "ORDER BY NEWID() " +
+                    ")B " +
+                        "UNION " +
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM AnteriorDeltoid " +
+                        "WHERE IsCompound = 1 AND Exercise NOT LIKE '%Arnold%' AND Exercise NOT LIKE '%Machine%' " + // Drop Arnold and Machine presses from Strength workouts 
+                        "ORDER BY NEWID() " +
+                    ")C " +
+                        "UNION " +
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +   // Add optional Chest exercises
+                        "FROM ChestOptionals " +
+                        "WHERE RowNumber IN(SELECT * FROM ChestNonCompIntersect) " +
+                    ")D " +
+                        "UNION " +
+                    "SELECT* FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +         // Add fly/crossover variation 
+                        "FROM Chest " +
+                        "WHERE Exercise LIKE '%Crossover%' OR Exercise LIKE '%Fly%' " +
+                        "ORDER BY NEWID() " +
+                    ")E " +
+                        "UNION " +
+                    "SELECT* FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +               //Add everything triceps
+                        "FROM Triceps " +
+                    ")F " +
+                    "ORDER BY MuscleGroup;";
             }
             else if (radioHypertrophy.Checked)
             {
-
+                Workout = 
+                    "SELECT * FROM Triceps " +
+                        "UNION " +
+                    "SELECT* FROM Chest " +
+                        "UNION " +
+                    "SELECT* FROM AnteriorDeltoid " +
+                        "UNION " +
+                    "SELECT * FROM LateralDeltoid " +
+                    "ORDER BY SpecificTarget;";
             }
-
-            Workout = "SELECT * FROM Triceps " +
-                        "UNION " +
-                        "SELECT* FROM Chest " +
-                        "UNION " +
-                        "SELECT* FROM AnteriorDeltoid " +
-                        "UNION " +
-                        "SELECT * FROM LateralDeltoid " +
-                        "ORDER BY SpecificTarget;";
 
             return Workout;
         }
