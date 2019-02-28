@@ -65,14 +65,15 @@
 {"Exercise":"Reverse Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
 {"Exercise":"Reverse Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
 {"Exercise":"Reverse Preacher Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
-{"Exercise":"Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
-{"Exercise":"Reverse Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Cable Pushdowns - Bar","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Lateral Head","IsCompound":0}
+{"Exercise":"Cable Pushdowns - Rope","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Medial Head","IsCompound":0}
+{"Exercise":"Reverse Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Lateral Head","IsCompound":0}
 {"Exercise":"Barbell Skullcrushers","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
 {"Exercise":"Dumbbell Skullcrushers","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
 {"Exercise":"Barbell Tricep Extensions","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
 {"Exercise":"Dumbbell Tricep Extensions","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
-{"Exercise":"Dumbbell Kickbacks","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
-{"Exercise":"Close-Grip Bench Press","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
+{"Exercise":"Dumbbell Kickbacks","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Lateral Head","IsCompound":0}
+{"Exercise":"Close-Grip Bench Press","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Long Head","IsCompound":0}
 {"Exercise":"Dips","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
 {"Exercise":"Bench Dips","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii","IsCompound":0}
 {"Exercise":"Barbell Wrist Curls","MuscleGroup":"Arms","SpecificTarget":"Forearms","IsCompound":0}
