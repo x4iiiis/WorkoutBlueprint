@@ -46,11 +46,12 @@
 {"Exercise":"Bent-Over Barbell Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
 {"Exercise":"Bent-Over Dumbbell Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
 {"Exercise":"T-Bar Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids?","IsCompound":0}
+{"Exercise":"Meadows Row","MuscleGroup":"Back","SpecificTarget":"Latissimus Dorsi","IsCompound":0}
 {"Exercise":"Single-Arm Dumbbell Row","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
 {"Exercise":"Single-Arm Cable Row","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
-{"Exercise":"Seated Cable Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids \u0026 Lower Latissimus Dorsi","IsCompound":0}
+{"Exercise":"Seated Cable Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids & Lower Latissimus Dorsi","IsCompound":0}
 {"Exercise":"Bent-Arm Barbell Pullover","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
-{"Exercise":"Deadlift","MuscleGroup":"Back","SpecificTarget":"","IsCompound":1}
+{"Exercise":"Deadlift","MuscleGroup":"Legs","SpecificTarget":"","IsCompound":1}
 {"Exercise":"Good Mornings","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
 {"Exercise":"Hyperextensions","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
 {"Exercise":"Barbell Curl","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
@@ -62,9 +63,9 @@
 {"Exercise":"Concentration Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
 {"Exercise":"Lying Dumbbell Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
 {"Exercise":"Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}
-{"Exercise":"Reverse Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
-{"Exercise":"Reverse Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
-{"Exercise":"Reverse Preacher Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii \u0026 Forearms","IsCompound":0}
+{"Exercise":"Reverse Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii & Forearms","IsCompound":0}
+{"Exercise":"Reverse Cable Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii & Forearms","IsCompound":0}
+{"Exercise":"Reverse Preacher Curls","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii & Forearms","IsCompound":0}
 {"Exercise":"Cable Pushdowns - Bar","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Lateral Head","IsCompound":0}
 {"Exercise":"Cable Pushdowns - Rope","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Medial Head","IsCompound":0}
 {"Exercise":"Reverse Cable Pushdowns","MuscleGroup":"Arms","SpecificTarget":"Triceps Brachii - Lateral Head","IsCompound":0}

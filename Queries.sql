@@ -175,3 +175,96 @@ SELECT * FROM
 	ORDER BY NEWID()
 )H
 
+
+
+
+
+
+/* Working on a proper pull workout - STRENGTH */
+WITH
+	TrapsCounter AS
+	(
+		SELECT *, ROW_NUMBER() OVER (ORDER BY ID) as RowNumber FROM Trapezius
+	),
+	TrapsFarmersWalkIntersect as 
+	(
+		Select RowNumber from TrapsCounter
+		Intersect
+		Select * from (SELECT FLOOR(RAND()*((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0)-1+1))+1 as RandNum)A
+	),
+	FarmersWalkSelector as
+	(
+		SELECT * FROM TrapsCounter WHERE Exercise LIKE '%Farmers Walk%'
+	)
+
+SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Back
+	WHERE Exercise LIKE '%Ups'
+	ORDER BY NEWID()
+)A
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Back
+	WHERE Exercise LIKE '%Row%' AND Exercise NOT LIKE '%Cable%'					/* Drop cable from strength days*/ 
+	ORDER BY NEWID()
+)B
+UNION ALL
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Back
+	WHERE Exercise LIKE '%Pulldown%' 
+)C
+UNION ALL
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM PosteriorDeltoid
+	WHERE Exercise LIKE '%Face Pull%'
+)D
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM PosteriorDeltoid
+	WHERE Exercise NOT LIKE '%Face Pull%'					
+	ORDER BY NEWID()
+)E
+UNION ALL
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Trapezius
+	WHERE Exercise LIKE '%Upright Row%'
+)F
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Trapezius
+	WHERE Exercise NOT LIKE '%Upright Row%' AND Exercise NOT LIKE '%Farmers Walk%' 					
+	ORDER BY NEWID()
+)G
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
+	WHERE Exercise LIKE '%Curl%' AND Exercise NOT LIKE '%Cable%' AND Exercise NOT LIKE '%Hammer%' AND Exercise NOT LIKE '%Reverse%'
+	ORDER BY NEWID()
+)H
+UNION ALL
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
+	WHERE Exercise LIKE '%Hammer Curl%'
+)I
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
+	WHERE Exercise LIKE '%Reverse%' 					
+	ORDER BY NEWID()
+)J
+UNION ALL 
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM FarmersWalkSelector		/* Add optional Farmers Walk exercises */
+	WHERE RowNumber IN (SELECT * FROM TrapsFarmersWalkIntersect)
+)K
