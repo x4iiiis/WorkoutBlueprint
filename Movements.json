@@ -87,16 +87,19 @@
 {"Exercise":"Sissy Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
 {"Exercise":"Leg Press","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
 {"Exercise":"Hack Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":1}
-{"Exercise":"Lunges","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
-{"Exercise":"Bulgarian Split Squat","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
+{"Exercise":"Lunges","MuscleGroup":"Legs","SpecificTarget":"Glutes","IsCompound":0}
+{"Exercise":"Bulgarian Split Squat","MuscleGroup":"Legs","SpecificTarget":"Glutes","IsCompound":0}
+{"Exercise":"Glute Bridge","MuscleGroup":"Legs","SpecificTarget":"Glutes","IsCompound":0}
+{"Exercise":"Hip Thrust","MuscleGroup":"Legs","SpecificTarget":"Glutes","IsCompound":0}
 {"Exercise":"Leg Extension","MuscleGroup":"Legs","SpecificTarget":"Quadriceps","IsCompound":0}
 {"Exercise":"Hamstring Curls","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
 {"Exercise":"Romanian Deadlift","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
-{"Exercise":"Single-Stiff-Leg Dealift","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
+{"Exercise":"Single-Stiff-Leg Deadlift","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":0}
 {"Exercise":"Reverse Hack Squat","MuscleGroup":"Legs","SpecificTarget":"Hamstrings","IsCompound":1}
 {"Exercise":"Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Calves","IsCompound":0}
+{"Exercise":"Seated Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Calves","IsCompound":0}
 {"Exercise":"Calf Press","MuscleGroup":"Legs","SpecificTarget":"Calves","IsCompound":0}
-{"Exercise":"Reverse Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Tibialis Anterior?","IsCompound":0}
+{"Exercise":"Reverse Calf Raises","MuscleGroup":"Legs","SpecificTarget":"Tibialis Anterior","IsCompound":0}
 {"Exercise":"Roman Chair","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis","IsCompound":0}
 {"Exercise":"Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis","IsCompound":0}
 {"Exercise":"Twisting Crunches","MuscleGroup":"Abdominals","SpecificTarget":"Upper Rectus Abdominis \u0026 External Obliques","IsCompound":0}
