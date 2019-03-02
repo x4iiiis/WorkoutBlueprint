@@ -303,51 +303,59 @@ SELECT * FROM
 	ORDER BY NEWID()
 )B
 UNION ALL
+SELECT * FROM 
+( 
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound
+	FROM Hamstrings
+	WHERE Exercise LIKE '%Deadlift%'
+	ORDER BY NEWID()
+)C
+UNION ALL
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM ReverseHackSquatSelector		/* Add optional Reverse Hack Squat */
 	WHERE RowNumber IN (SELECT * FROM ReverseHackSquatIntersect)
-)C
+)D
 UNION ALL
 SELECT * FROM 
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Glutes
 	ORDER BY NEWID()
-)D
+)E
 UNION ALL
 SELECT * FROM
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Quadriceps
 	WHERE Exercise NOT LIKE 'Back%' AND Exercise NOT LIKE 'Sissy%' AND Exercise NOT LIKE '%Split%' AND (Exercise LIKE '%Squat' OR Exercise LIKE '%Press')
 	ORDER BY NEWID()
-)E
+)F
 UNION ALL
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Hamstrings
 	WHERE Exercise LIKE '%Curls%'
-)F
+)G
 UNION ALL
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Quadriceps
 	WHERE Exercise LIKE '%Extension%'
-)G
+)H
 UNION ALL
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves
 	WHERE Exercise LIKE 'Seated%'
-)H
-UNION ALL
-SELECT * FROM
-(
-	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves
-	WHERE Exercise NOT LIKE 'Seated%' AND Exercise NOT LIKE 'Reverse%'
 )I
 UNION ALL
 SELECT * FROM
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves
-	WHERE Exercise LIKE 'Reverse%'
+	WHERE Exercise NOT LIKE 'Seated%' AND Exercise NOT LIKE 'Reverse%'
 )J
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves
+	WHERE Exercise LIKE 'Reverse%'
+)K

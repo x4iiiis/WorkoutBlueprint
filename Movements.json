@@ -51,7 +51,7 @@
 {"Exercise":"Single-Arm Cable Row","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
 {"Exercise":"Seated Cable Row","MuscleGroup":"Back","SpecificTarget":"Rhomboids & Lower Latissimus Dorsi","IsCompound":0}
 {"Exercise":"Bent-Arm Barbell Pullover","MuscleGroup":"Back","SpecificTarget":"Lower Latissimus Dorsi","IsCompound":0}
-{"Exercise":"Deadlift","MuscleGroup":"Legs","SpecificTarget":"","IsCompound":1}
+{"Exercise":"Deadlift","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":1}
 {"Exercise":"Good Mornings","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
 {"Exercise":"Hyperextensions","MuscleGroup":"Back","SpecificTarget":"Erector Spinae","IsCompound":0}
 {"Exercise":"Barbell Curl","MuscleGroup":"Arms","SpecificTarget":"Biceps Brachii","IsCompound":0}

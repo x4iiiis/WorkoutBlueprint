@@ -706,6 +706,15 @@ namespace WorkoutBlueprint
                         ")A " +
                         
                             "UNION ALL " +
+                        
+                        "SELECT * FROM " +
+                        "( " +
+                            "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                            "FROM Back " +
+                            "WHERE Exercise = 'Deadlift' " +
+                        ")B " +
+                        
+                            "UNION ALL " +
                             
                         "SELECT * FROM " +
                         "( " +
@@ -713,7 +722,7 @@ namespace WorkoutBlueprint
                             "FROM Hamstrings " +
                             "WHERE Exercise LIKE '%Deadlift%' " +
                             "ORDER BY NEWID() " +
-                        ")B " +
+                        ")C " +
                         
                             "UNION ALL " +
                             
@@ -722,7 +731,7 @@ namespace WorkoutBlueprint
                             "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM ReverseHackSquatSelector " +
                             "WHERE RowNumber IN (SELECT* FROM ReverseHackSquatIntersect) " +    // Add optional Reverse Hack Squat 
-                        ")C " +
+                        ")D " +
                         
                             "UNION ALL " +
                             
@@ -731,7 +740,7 @@ namespace WorkoutBlueprint
                             "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM Glutes " +
                             "ORDER BY NEWID() " +
-                        ")D " +
+                        ")E " +
                         
                             "UNION ALL " +
                             
@@ -741,7 +750,7 @@ namespace WorkoutBlueprint
                             "FROM Quadriceps " +
                             "WHERE Exercise NOT LIKE 'Back%' AND Exercise NOT LIKE 'Sissy%' AND Exercise NOT LIKE '%Split%' AND(Exercise LIKE '%Squat' OR Exercise LIKE '%Press') " +
                             "ORDER BY NEWID() " +
-                        ")E " +
+                        ")F " +
                         
                             "UNION ALL " +
                             
@@ -750,7 +759,7 @@ namespace WorkoutBlueprint
                             "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM Hamstrings " +
                             "WHERE Exercise LIKE '%Curls%' " +
-                        ")F " +
+                        ")G " +
                         
                             "UNION ALL " +
                             
@@ -759,7 +768,7 @@ namespace WorkoutBlueprint
                             "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM Quadriceps " +
                             "WHERE Exercise LIKE '%Extension%' " +
-                        ")G " +
+                        ")H " +
                         
                             "UNION ALL " +
                             
@@ -768,15 +777,6 @@ namespace WorkoutBlueprint
                             "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM Calves " +
                             "WHERE Exercise LIKE 'Seated%' " +
-                        ")H " +
-                        
-                            "UNION ALL " +
-                            
-                        "SELECT * FROM " +
-                        "( " +
-                            "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
-                            "FROM Calves " +
-                            "WHERE Exercise NOT LIKE 'Seated%' AND Exercise NOT LIKE 'Reverse%' " +
                         ")I " +
                         
                             "UNION ALL " +
@@ -785,8 +785,17 @@ namespace WorkoutBlueprint
                         "( " +
                             "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
                             "FROM Calves " +
+                            "WHERE Exercise NOT LIKE 'Seated%' AND Exercise NOT LIKE 'Reverse%' " +
+                        ")J " +
+                        
+                            "UNION ALL " +
+                            
+                        "SELECT * FROM " +
+                        "( " +
+                            "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                            "FROM Calves " +
                             "WHERE Exercise LIKE 'Reverse%' " +
-                        ")J;";
+                        ")K;";
             }
             else if (radioHypertrophy.Checked)
             {
