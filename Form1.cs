@@ -1016,13 +1016,105 @@ namespace WorkoutBlueprint
             }
             else if (radioHypertrophy.Checked)
             {
-                Workout = 
-                    "SELECT * FROM Quadriceps " +
-                    "UNION " +
-                    "SELECT* FROM Hamstrings " +
-                    "UNION " +
-                    "SELECT * FROM Calves " +
-                    "ORDER BY SpecificTarget;";
+                Workout =
+                    "WITH " +
+                    "HammyCounter AS " +
+                    "( " +
+                        "SELECT *, ROW_NUMBER() OVER(ORDER BY ID) as RowNumber FROM Hamstrings " +
+                    "), " +
+                    "ReverseHackSquatIntersect as " +
+                    "( " +
+                        "SELECT RowNumber FROM HammyCounter " +
+
+                            "INTERSECT " +
+
+                        "SELECT * FROM(SELECT FLOOR(RAND() *((SELECT COUNT(*) FROM Hamstrings)-1 + 1))+1 as RandNum)A " +
+                    "), " +
+                    "ReverseHackSquatSelector as " +
+                    "( " +
+                        "SELECT * FROM HammyCounter WHERE Exercise LIKE '%Reverse Hack%' " +
+                    ") " +
+
+                    "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Quadriceps " +
+                        "WHERE Exercise = 'Back Squat' " +
+                    ")A " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Hamstrings " +
+                        "WHERE Exercise LIKE '%Deadlift%' " +
+                        "ORDER BY NEWID() " +
+                    ")B " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM ReverseHackSquatSelector " +      /* Add optional Reverse Hack Squat */
+                        "WHERE RowNumber IN (SELECT* FROM ReverseHackSquatIntersect) " +
+                    ")C " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Glutes " +
+                        "ORDER BY NEWID() " +
+                    ")D " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Quadriceps " +
+                        "WHERE Exercise NOT LIKE 'Back%' AND Exercise NOT LIKE 'Sissy%' AND Exercise NOT LIKE '%Split%' AND(Exercise LIKE '%Squat' OR Exercise LIKE '%Press') " +
+                        "ORDER BY NEWID() " +
+                    ")E " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Hamstrings " +
+                        "WHERE Exercise LIKE '%Curls%' " +
+                    ")F " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Quadriceps " +
+                        "WHERE Exercise LIKE '%Extension%' " +
+                    ")G " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves " +
+                        "WHERE Exercise LIKE 'Seated%' " +
+                    ")H " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves " +
+                        "WHERE Exercise NOT LIKE 'Seated%' AND Exercise NOT LIKE 'Reverse%' " +
+                    ")I " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Calves " +
+                        "WHERE Exercise LIKE 'Reverse%' " +
+                    ")J";
             }
 
             return Workout;
