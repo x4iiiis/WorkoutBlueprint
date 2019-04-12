@@ -767,15 +767,125 @@ namespace WorkoutBlueprint
             }
             else if (radioHypertrophy.Checked)
             {
-                Workout = 
-                    "SELECT * FROM Triceps " +
-                        "UNION " +
-                    "SELECT* FROM Chest " +
-                        "UNION " +
-                    "SELECT* FROM AnteriorDeltoid " +
-                        "UNION " +
-                    "SELECT * FROM LateralDeltoid " +
-                    "ORDER BY SpecificTarget;";
+                Workout =
+                    "WITH " +
+                    "ChestNonCompounds AS " +
+                    "( " +
+                        "SELECT *, ROW_NUMBER() OVER(ORDER BY ID) as RowNumber FROM Chest WHERE IsCompound = 0 " +
+                    "), " +
+                    "ChestNonCompIntersect as " +
+                    "( " +
+                        "SELECT RowNumber from ChestNonCompounds " +
+
+                            "INTERSECT " +
+
+                        "SELECT * FROM (SELECT FLOOR(RAND() * ((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0) - 1 + 1))+1 as RandNum)A " +
+                    "), " +
+                    "CS as " +
+                    "( " +
+                        "SELECT * FROM ChestNonCompounds WHERE Exercise LIKE '%Pullover%' " +
+                    ") " +
+
+                    "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Chest " +
+                        "WHERE IsCompound = 1 AND Exercise LIKE '%Flat%' " +
+                        "ORDER BY NEWID() " +
+                    ")A " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Chest " +
+                        "WHERE IsCompound = 1 AND Exercise LIKE '%Incline%' " +
+                        "ORDER BY NEWID() " +
+                    ")B " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM AnteriorDeltoid " +
+                        "WHERE IsCompound = 1 " +
+                        "ORDER BY NEWID() " +
+                    ")C " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Chest " +
+                        "WHERE Exercise LIKE '%Crossover%' OR Exercise LIKE '%Fly%' " +
+                        "ORDER BY NEWID() " +
+                    ")D " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM CS " +
+                        "WHERE RowNumber IN (SELECT* FROM ChestNonCompIntersect) " +
+                    ")E " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM LateralDeltoid " +
+                        "WHERE IsCompound = 0 " +
+                        "ORDER BY NEWID() " +
+                    ")F " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM AnteriorDeltoid " +
+                        "WHERE IsCompound = 0 " +
+                        "ORDER BY NEWID() " +
+                    ")G " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Triceps " +
+                        "WHERE SpecificTarget LIKE '%Long Head%' " +
+                        "ORDER BY NEWID() " +
+                    ")H " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Triceps " +
+                        "WHERE SpecificTarget LIKE '%Lateral Head%' " +
+                        "ORDER BY NEWID() " +
+                    ")I " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Triceps " +
+                        "WHERE SpecificTarget LIKE '%Medial%' " +
+                        "ORDER BY NEWID() " +
+                    ")J " +
+
+                        "UNION ALL " +
+
+                    "SELECT * FROM " +
+                    "( " +
+                        "SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound " +
+                        "FROM Triceps " +
+                        "WHERE SpecificTarget LIKE '%Triceps Brachii' " +
+                        "ORDER BY NEWID() " +
+                    ")H";
             }
 
             return Workout;

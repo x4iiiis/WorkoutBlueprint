@@ -176,7 +176,103 @@ SELECT * FROM
 )H
 
 
+/* Working on a proper push workout - HYPERTROPHY */
+WITH
+ChestNonCompounds AS
+(
+	SELECT *, ROW_NUMBER() OVER (ORDER BY ID) as RowNumber FROM Chest WHERE IsCompound = 0
+),
+ChestNonCompIntersect as 
+(
+	Select RowNumber from ChestNonCompounds
+	Intersect
+	Select * from (SELECT FLOOR(RAND()*((SELECT COUNT(*) FROM CHEST WHERE IsCompound = 0)-1+1))+1 as RandNum)A
+),
+CS as
+(
+	SELECT * FROM ChestNonCompounds WHERE Exercise LIKE '%Pullover%'
+)
 
+SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Chest
+	WHERE IsCompound = 1 AND Exercise LIKE '%Flat%'
+	ORDER BY NEWID()
+)A
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Chest
+	WHERE IsCompound = 1 AND Exercise LIKE '%Incline%'
+	ORDER BY NEWID()
+)B
+UNION ALL 
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM AnteriorDeltoid
+	WHERE IsCompound = 1 
+	ORDER BY NEWID()
+)C
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM Chest	/* Add fly/crossover variation */
+	WHERE Exercise LIKE '%Crossover%' OR Exercise LIKE '%Fly%'
+	ORDER BY NEWID()
+)D
+UNION ALL 
+SELECT * FROM
+(
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM CS		/* Add optional Chest exercises */
+	WHERE RowNumber IN (SELECT * FROM ChestNonCompIntersect)
+)E
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound FROM LateralDeltoid	/* Pick a Lateral Deltoid non-compound movement */
+	WHERE IsCompound = 0
+	ORDER BY NEWID()
+)F
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound /* Pick a lateral deltoid non-compound exercise */
+	FROM AnteriorDeltoid		
+	WHERE IsCompound = 0
+	ORDER BY NEWID()
+)G
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound /* Target the tricep's long head */
+	FROM Triceps		
+	WHERE SpecificTarget LIKE '%Long Head%'
+	ORDER BY NEWID()
+)H
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound /* Target the tricep's lateral head */
+	FROM Triceps		
+	WHERE SpecificTarget LIKE '%Lateral Head%'
+	ORDER BY NEWID()
+)I
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound /* Target the tricep's medial head */
+	FROM Triceps		
+	WHERE SpecificTarget LIKE '%Medial%'
+	ORDER BY NEWID()
+)J
+UNION ALL
+SELECT * FROM
+(
+	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound 
+	FROM Triceps		
+	WHERE SpecificTarget LIKE '%Triceps Brachii' /* Not head-specific tricep exercises to finish */
+	ORDER BY NEWID()
+)H
 
 
 
