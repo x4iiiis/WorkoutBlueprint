@@ -419,42 +419,47 @@ SELECT * FROM
 UNION ALL
 SELECT * FROM
 (
+	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Back
+	WHERE Exercise LIKE '%extension%' 
+)F
+SELECT * FROM
+(
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Trapezius
 	WHERE Exercise LIKE '%Upright Row%'
-)F
+)G
 UNION ALL
 SELECT * FROM
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Trapezius
 	WHERE Exercise NOT LIKE '%Upright Row%' AND Exercise NOT LIKE '%Farmers Walk%' 					
 	ORDER BY NEWID()
-)G
+)H
 UNION ALL
 SELECT * FROM
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
 	WHERE Exercise LIKE '%Curl%' AND Exercise NOT LIKE '%Hammer%' AND Exercise NOT LIKE '%Reverse%'
 	ORDER BY NEWID()
-)H
+)I
 UNION ALL
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
 	WHERE Exercise LIKE '%Hammer Curl%'
-)I
+)J
 UNION ALL
 SELECT * FROM
 (
 	SELECT TOP 1 Exercise, MuscleGroup, SpecificTarget, IsCompound  FROM Biceps
 	WHERE Exercise LIKE '%Reverse%' 					
 	ORDER BY NEWID()
-)J
+)K
 UNION ALL 
 SELECT * FROM
 (
 	SELECT Exercise, MuscleGroup, SpecificTarget, IsCompound FROM FarmersWalkSelector		/* Add optional Farmers Walk exercises */
 	WHERE RowNumber IN (SELECT * FROM TrapsFarmersWalkIntersect)
-)K
+)L
 
 
 
